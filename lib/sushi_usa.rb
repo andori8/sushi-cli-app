@@ -1,5 +1,1 @@
-require "sushi_usa/version"
-
-module SushiUsa
-  # Your code goes here...
-end
+require_relative './sushi_usa/version'
