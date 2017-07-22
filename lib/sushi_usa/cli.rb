@@ -20,7 +20,7 @@ class SushiUsa::Cli
     input = gets.strip.downcase
 
       if input.to_i.between?(1,15)
-        puts "restaurant details"
+        puts @restaurant[input.to_i - 1]
       elsif input == "list"
         list_restaurants
       else
