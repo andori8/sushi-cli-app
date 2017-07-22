@@ -1,4 +1,4 @@
-class SushiUsa::Restaurant
+class Restaurant
   attr_accessor :name, :city, :url
 
   def self.all

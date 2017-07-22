@@ -1,4 +1,4 @@
-class SushiUsa::Cli
+class Cli
   def call
     puts "Here are the top 15 sushi restaurants in America as of 2017:"
     list_restaurants
@@ -7,7 +7,7 @@ class SushiUsa::Cli
   end
 
   def list_restaurants
-    @restaurant = SushiUsa::Restaurant.all
+    @restaurant = Restaurant.all
     @restaurant.each.with_index(1) { |restaurant, i|
     puts "#{i}. #{restaurant.name} - #{restaurant.city}"}
   end

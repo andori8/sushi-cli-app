@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/sushi_usa'
+require "bundler/setup"
+require "sushi_usa"
 
-SushiUsa::Cli.new.call
+Cli.new.call
