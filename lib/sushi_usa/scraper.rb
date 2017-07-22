@@ -5,8 +5,11 @@ class Scraper
     doc = Nokogiri::HTML(open(html))
     i = 0
     while i < 15 do
-      restaurant = doc.css("ol li a")[i].text
-      restaurant_name = restaurant.split(restaurant[/\(.*?\)/]).first.strip
+      restaurants = doc.css("ol li a")[i].text
+      restaurants_name = restaurants.split(restaurants[/\(.*?\)/]).first.strip
+      restaurant = Restaurant.new(restaurants_name)
+      restaurant.city = restaurants[/\(.*?\)/].delete('()')
+      i += 1
     end
   end
 end

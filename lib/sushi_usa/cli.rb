@@ -7,8 +7,8 @@ class Cli
   end
 
   def list_restaurants
-    @restaurant = Restaurant.all
-    @restaurant.each.with_index(1) { |restaurant, i|
+    Scraper.scrape_restaurants
+    Restaurant.all.each.with_index(1) { |restaurant, i|
     puts "#{i}. #{restaurant.name} - #{restaurant.city}"}
   end
 
@@ -20,7 +20,7 @@ class Cli
     input = gets.strip.downcase
 
       if input.to_i.between?(1,15)
-        puts @restaurant[input.to_i - 1]
+        puts Restaurant.all[input.to_i - 1]
       elsif input == "list"
         list_restaurants
       else
