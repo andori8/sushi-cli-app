@@ -7,10 +7,7 @@ class SushiUsa::Cli
   end
 
   def list_restaurants
-    puts <<~DOC
-    1. Sushi Nakazawa - New York
-    2. Sushi on Jones - New York
-    DOC
+    @restaurant = SushiUsa::Restaurant.all
   end
 
   def menu
