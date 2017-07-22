@@ -8,6 +8,8 @@ class SushiUsa::Cli
 
   def list_restaurants
     @restaurant = SushiUsa::Restaurant.all
+    @restaurant.each.with_index(1) { |restaurant, i|
+    puts "#{i+1}. #{restaurant.name} - #{restaurant.city}"}
   end
 
   def menu
