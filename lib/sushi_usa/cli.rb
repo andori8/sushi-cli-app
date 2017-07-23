@@ -20,7 +20,8 @@ class Cli
     input = gets.strip.downcase
 
       if input.to_i.between?(1,15)
-        puts Restaurant.all[input.to_i - 1]
+        restaurant =Restaurant.all[input.to_i - 1]
+        print_details(restaurant)
       elsif input == "list"
         list_restaurants
       else
@@ -31,5 +32,17 @@ class Cli
 
   def goodbye
     puts "Thank you and good bye!"
+  end
+
+  def print_details(restaurant)
+    Scraper.scrape_details(restaurant)
+    puts <<~DOC
+    #{restaurant.name} - #{restaurant.city}
+    #{restaurant.reservation}
+    #{restaurant.budget}
+    #{restaurant.address}
+    #{restaurant.phone}
+    #{restaurant.website}
+    DOC
   end
 end

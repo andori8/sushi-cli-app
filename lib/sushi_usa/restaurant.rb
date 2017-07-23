@@ -1,5 +1,5 @@
 class Restaurant
-  attr_accessor :name, :city, :url
+  attr_accessor :name, :id, :city, :url, :reservation, :budget, :address, :phone, :website
   @@all = []
 
   def initialize(name)
