@@ -2,7 +2,6 @@ class Cli
   def call
     list_restaurants
     menu
-    goodbye
   end
 
   def list_restaurants
@@ -25,6 +24,8 @@ class Cli
         print_details(restaurant)
       elsif input == "list"
         list_restaurants
+      elsif input == "exit"
+        goodbye
       else
         puts "Not a valid choice."
       end
@@ -39,11 +40,13 @@ class Cli
     Scraper.scrape_details(restaurant)
     puts <<~DOC
     #{restaurant.name} - #{restaurant.city}
+    --------------------------------------
     #{restaurant.reservation}
     #{restaurant.budget}
     #{restaurant.address}
     #{restaurant.phone}
     #{restaurant.website}
+    --------------------------------------
     DOC
   end
 end
