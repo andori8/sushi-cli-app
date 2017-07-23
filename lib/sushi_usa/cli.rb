@@ -1,12 +1,13 @@
 class Cli
   def call
-    puts "Here are the top 15 sushi restaurants in America as of 2017:"
     list_restaurants
     menu
     goodbye
   end
 
   def list_restaurants
+    puts "Here are the top 15 sushi restaurants in America as of 12/12/2016:"
+    Restaurant.reset
     Scraper.scrape_restaurants
     Restaurant.all.each.with_index(1) { |restaurant, i|
     puts "#{i}. #{restaurant.name} - #{restaurant.city}"}
