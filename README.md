@@ -1,8 +1,6 @@
 # SushiUsa
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sushi_usa`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Check out the details for the best sushi restaurants in the USA and plan for your next trip!
 
 ## Installation
 
@@ -22,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Install and run the gem to check out the list of the best restaurants. It may take a month
+before you can dine in some of these places, so make your reservations quickly!
 
 ## Development
 
