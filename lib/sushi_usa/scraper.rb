@@ -17,12 +17,27 @@ class Scraper
 
   def self.scrape_details(restaurant)
     doc = Nokogiri::HTML(open(restaurant.url))
-    info = doc.search("fieldset p")[restaurant.id].text
+    info = doc.search("fieldset")[restaurant.id].text
     info_array = info.split("\n")
-    restaurant.reservation = info_array.detect {|x| x.start_with?("Reservation")}
-    restaurant.budget = info_array.detect {|x| x.start_with?("Budget")}
-    restaurant.address = info_array.detect {|x| x.start_with?("Navigation")}
-    restaurant.phone = info_array.detect {|x| x.start_with?("Ring")}
-    restaurant.website = info_array.detect {|x| x.start_with?("Surf")}
+    if info_array.select {|x| x.start_with?("Reservation")}.count > 1
+      restaurant.reservation = info_array.detect {|x| x.start_with?("Reservation")}
+      restaurant.budget = info_array.select {|x| x.start_with?("Budget")}
+      restaurant.address = info_array.select {|x| x.start_with?("Navigation")}
+      restaurant.phone = info_array.select {|x| x.start_with?("Ring")}
+      restaurant.website = info_array.select {|x| x.start_with?("Surf")}
+    elsif info_array[11] == "Surf: sushizo.us"
+      restaurant.reservation = info_array.detect {|x| x.start_with?("Reservation")}
+      restaurant.budget = info_array.detect {|x| x.start_with?("Budget")}
+      restaurant.address = [info_array[7].gsub!(/\P{ASCII}/, '').strip,
+      info_array[8].gsub!(/\P{ASCII}/, '').strip, info_array[9].gsub!(/\P{ASCII}/, '').strip]
+      restaurant.phone = info_array.detect {|x| x.start_with?("Ring")}
+      restaurant.website = info_array.detect {|x| x.start_with?("Surf")}
+    else
+      restaurant.reservation = info_array.detect {|x| x.start_with?("Reservation")}
+      restaurant.budget = info_array.detect {|x| x.start_with?("Budget")}
+      restaurant.address = info_array.detect {|x| x.start_with?("Navigation")}
+      restaurant.phone = info_array.detect {|x| x.start_with?("Ring")}
+      restaurant.website = info_array.detect {|x| x.start_with?("Surf")}
+    end
   end
 end

@@ -38,6 +38,24 @@ class Cli
 
   def print_details(restaurant)
     Scraper.scrape_details(restaurant)
+    if restaurant.id == 2
+    puts <<~DOC
+    #{restaurant.name} - #{restaurant.city}
+    --------------------------------------
+    New York
+    #{restaurant.reservation}
+    #{restaurant.address.first}
+    #{restaurant.phone.first}
+
+    Boston
+    #{restaurant.reservation}
+    #{restaurant.address.last}
+    #{restaurant.phone.last}
+
+    #{restaurant.website}
+    --------------------------------------
+    DOC
+    else
     puts <<~DOC
     #{restaurant.name} - #{restaurant.city}
     --------------------------------------
@@ -48,5 +66,6 @@ class Cli
     #{restaurant.website}
     --------------------------------------
     DOC
+    end
   end
 end
