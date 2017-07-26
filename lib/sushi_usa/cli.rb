@@ -52,9 +52,25 @@ class Cli
     #{restaurant.address.last}
     #{restaurant.phone.last}
 
+    #{restaurant.website.first}
+    --------------------------------------
+    DOC
+
+    elsif restaurant.id == 7
+    puts <<~DOC
+    #{restaurant.name} - #{restaurant.city}
+    --------------------------------------
+    #{restaurant.reservation}
+    #{restaurant.budget}
+    Navigation:
+    - #{restaurant.address[0]}
+    - #{restaurant.address[1]}
+    - #{restaurant.address[2]}
+    #{restaurant.phone}
     #{restaurant.website}
     --------------------------------------
     DOC
+
     else
     puts <<~DOC
     #{restaurant.name} - #{restaurant.city}
